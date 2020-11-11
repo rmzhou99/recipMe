@@ -1,7 +1,7 @@
 <?php
-include ("../connectdb.php");
-include ("display_recipes_sql.php");
-include ("../recipes_sql.php");
+include("connectdb.php");
+include("display_recipes_sql.php");
+include("recipes_sql.php");
 
 // Check if user is logged in or not
 if (!isset($_SESSION['uname'])) {
@@ -24,11 +24,11 @@ if (isset($_POST['logout'])) {
 //insert the recipe
 if (isset($_POST['action'])) {
     if (!empty($_POST['action']) && ($_POST['action'] == 'Add')) {
-       addRecipe($_SESSION['uname'], $_POST['recipeName'], $_POST['instructions'], $_POST['instructionCount'], $_POST['country'], $_POST['cookingTime'],1);
-       //stay on the submit recipe page
-       header('Location: submit_recipes.php');
+        addRecipe($_SESSION['uname'], $_POST['recipeName'], $_POST['instructions'], $_POST['instructionCount'], $_POST['country'], $_POST['cookingTime'], 1);
+        //stay on the submit recipe page
+        header('Location: submit_recipes.php');
     }
- }
+}
 
 
 ?>
@@ -61,26 +61,26 @@ if (isset($_POST['action'])) {
     </div>
 
     <form action="" method="post">
-         <br />
-         <div>
+        <br />
+        <div>
             <input type="text" id="recipeName" name="recipeName" placeholder="Name" required />
-         </div>
-         <div>
-         <textarea type="text" id="instructions" name="instructions" placeholder="Instructions" required></textarea>
-         </div>
-         <div>
+        </div>
+        <div>
+            <textarea type="text" id="instructions" name="instructions" placeholder="Instructions" required></textarea>
+        </div>
+        <div>
             <input type="number" id="instructionCount" name="instructionCount" placeholder="# of Instructions" min="0" required />
-         </div>
-         <div>
+        </div>
+        <div>
             <input type="number" id="cookingTime" name="cookingTime" placeholder="Total Time" min="0" required />
-         </div>
-         <div>
-         <input type="text" id="country" name="country" placeholder="Country" required />
-         </div>
-         <div>
+        </div>
+        <div>
+            <input type="text" id="country" name="country" placeholder="Country" required />
+        </div>
+        <div>
             <input type="submit" value="Add" id="action" name="action" />
-         </div>
-      </form>
+        </div>
+    </form>
 
     <?php include('footer.html') ?>
 
